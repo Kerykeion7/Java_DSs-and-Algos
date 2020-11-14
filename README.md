@@ -1,3 +1,3 @@
 # Java DSA's
 
-My personal journey of learning Java and Data-Structures & Algorithms.
+My personal journey of learning Java, Data-Structures and Algorithms.
