@@ -17,8 +17,10 @@ public class DynamicArray implements Iterable<Object> {
     public DynamicArray(int capacity) {
         if (capacity < _minCapacity)
             _capacity = _minCapacity;
-        else
+        else{
             _capacity = capacity;
+            _minCapacity = capacity;
+        }
 
         _items = new Object[_capacity];
     }
