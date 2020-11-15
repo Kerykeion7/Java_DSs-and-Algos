@@ -28,14 +28,15 @@ public class HashTable<K, V> {
 
         pair = new KeyValuePair<>(key, value);
         int hashed = hash(key);
+        int index = hashed;
 
         int counter = 0;
-        while(_pairs[hashed] != null){
-            hashed += probe(counter);
+        while(_pairs[index] != null){
+            index = (hashed + probe(counter)) % _capacity;
             counter++;
         }
 
-        _pairs[hashed] = pair;
+        _pairs[index] = pair;
         _count++;
         if(_count >= _resizeTreshold) resize();
     }
@@ -49,13 +50,26 @@ public class HashTable<K, V> {
     }
 
     public KeyValuePair<K,V> get(K key){
-        KeyValuePair<K,V> pair = null;
-        for(KeyValuePair<K,V> p: _pairs){
-            if(p == null) continue;
-            if(key.equals(p.Key)) pair = p;
+        int hashed = hash(key);
+        KeyValuePair<K,V> pair = _pairs[hashed];
+        if(pair == null) return null;
+
+        int counter = 0;
+        while(!pair.Key.equals(key)){
+            int index = (hashed + probe(counter)) % _capacity;
+            pair = _pairs[index];
+            if(pair == null) return null;
+            counter++;
         }
 
         return pair;
+    }
+
+    public V getValue(K key){
+        KeyValuePair<K,V> pair = get(key);
+        if(pair == null) return null;
+
+        return pair.Value;
     }
 
     public boolean keyExists(K key){

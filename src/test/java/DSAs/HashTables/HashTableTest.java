@@ -55,7 +55,23 @@ public class HashTableTest {
     void HashTable_Get_Does_Not_Return_NULL() {
         HashTable<String, String> table = new HashTable<String, String>();
         setUpMainHashTable(table);
+        assertNotNull(table.get("TestKeyOne"));
+        assertNotNull(table.get("TestKeyTwo"));
         assertNotNull(table.get("TestKeyThree"));
+        assertNotNull(table.get("TestKeyFour"));
+        assertNotNull(table.get("TestKeyFive"));
+        assertNotNull(table.get("TestKeySix"));
+        assertNotNull(table.get("TestKeySeven"));
+        assertNotNull(table.get("TestKeyEight"));
+        assertNotNull(table.get("TestKeyNine"));
+        assertNotNull(table.get("TestKeyTen"));
+        assertNotNull(table.get("TestKeyEleven"));
+        assertNotNull(table.get("TestKeyTwelve"));
+        assertNotNull(table.get("TestKeyThirteen"));
+        assertNotNull(table.get("TestKeyFourteen"));
+        assertNotNull(table.get("TestKeyFifteen"));
+        assertNotNull(table.get("TestKeySixteen"));
+        assertNotNull(table.get("TestKeySeventeen"));
     }
 
     @Test
@@ -92,6 +108,19 @@ public class HashTableTest {
         assertNotNull(table.get(fiveKey));
         table.remove(fiveKey);
         assertNull(table.get(fiveKey));
+    }
+
+    @Test
+    void testing(){
+        HashTable<String, String> table = new HashTable<String, String>();
+        setUpMainHashTable(table);
+        int counter = 0;
+        for(int i = 0; i < table.getSize(); i++){
+            if(table.getAt(i) != null){
+                counter++;
+                System.out.println("Counter: " + counter + " -- Table[" + i + "]: " + table.getAt(i).Value);
+            }
+        }
     }
 
     void setUpMainHashTable(HashTable<String, String> table){
