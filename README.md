@@ -1,3 +1,4 @@
-# Java DSA's
+# Java Data-Structures and Algorithms
+My personal journey of learning Java, Data-Structures, Algorithms and JUnit testing.
 
-My personal journey of learning Java, Data-Structures and Algorithms.
+Inspired by [this](https://github.com/jwasham/coding-interview-university).
